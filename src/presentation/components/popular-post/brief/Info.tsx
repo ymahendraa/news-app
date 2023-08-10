@@ -1,5 +1,8 @@
 // component import
 import { Space, Typography } from "antd";
+import { FaShare, FaBookmark } from 'react-icons/fa';
+import styles from './brief.module.css'
+
 const { Title, Paragraph, Text } = Typography;
 const Info: React.FC = () => {
   return (
@@ -22,14 +25,18 @@ const Info: React.FC = () => {
         I sometimes feel I'm in a daily struggle not to become a shallowe
         version of myself...
       </Paragraph>
-      <Space>
+      <div className={styles['bottom-info']}>
         <Space direction="vertical" align="start" size={1}>
           <Text strong style={{ fontSize: "18px" }}>
             25 123
           </Text>
           <Text>People saw</Text>
         </Space>
-      </Space>
+        <Space direction="horizontal" align="start" size={1}>
+          <FaShare size={20} />
+          <FaBookmark size={20} />
+        </Space>
+      </div>
     </Space>
   );
 };

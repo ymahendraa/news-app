@@ -4,13 +4,13 @@ import Img from "./Img";
 import Info from "./Info";
 import style from "./brief.module.css";
 
-const PopularPost = () => {
+const HealthPost = () => {
   return (
-    <Space direction="vertical" align="center" className={style.container}>
-      <Img />
+    <Space direction="horizontal" className={style.container}>
       <Info />
+      <Img />
     </Space>
   );
 };
 
-export default PopularPost;
+export default HealthPost;
