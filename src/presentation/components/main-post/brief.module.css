@@ -5,11 +5,13 @@ main {
   position: relative;
 }
 .info-container {
+  display: flex;
+  justify-content: center;
   position: absolute;
   top: 70%;
 }
 .info {
-  max-width: 380px;
+  max-width: 90%;
   border-radius: 20px;
   background: white;
   padding: 25px 20px;
@@ -19,6 +21,8 @@ main {
 
 .image {
   border-radius: 20px;
+  max-width: 100%;
+  height: auto;
 }
 .bottom-info {
   display: flex;
