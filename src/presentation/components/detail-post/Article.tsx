@@ -2,7 +2,7 @@ import styles from './detail.module.css'
 import { Space, Typography } from 'antd'
 import { FaShare, FaBookmark } from 'react-icons/fa'
 const { Title, Paragraph, Text } = Typography;
-const Article = () => {
+const PostArticle = () => {
     return (
         <article className={styles.article}>
             <Space className={styles.category} >
@@ -34,4 +34,4 @@ const Article = () => {
     )
 }
 
-export default Article
+export default PostArticle

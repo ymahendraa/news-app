@@ -1,9 +1,17 @@
 // component import
 import { Space, Typography } from "antd";
-import styles from './brief.module.css'
+
+// utils import
+import dayjs from "dayjs";
 
 const { Title, Paragraph, Text } = Typography;
-const Info: React.FC = () => {
+
+interface InfoProps {
+  title: string;
+  createdDate: string;
+}
+
+const Info: React.FC<InfoProps> = ({ title, createdDate }: InfoProps) => {
   return (
 
     <Space direction="vertical" size={0}>
@@ -13,13 +21,13 @@ const Info: React.FC = () => {
           marginTop: "2px",
         }}
       >
-        The power of art in a political age is more impressive
+        {title}
       </Title>
       <Space size="middle" >
         <Text style={{ color: "#5842FF" }} strong>
           Tech
         </Text>
-        <Text>6 March 2023</Text>
+        <Text>{dayjs(createdDate).format('DD MMMM YYYY')}</Text>
       </Space>
     </Space>
 

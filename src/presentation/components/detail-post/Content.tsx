@@ -1,20 +1,24 @@
 // component import
-import { Space, Row, Col } from 'antd'
+import { Row, Col } from 'antd'
 import Info from './Info'
-import Article from './Article'
+import PostArticle from './Article'
 import Img from './Img'
+
+// utils import
 import styles from './detail.module.css'
-const Content = () => {
+import { Article } from '../../../domain/models'
+
+const Content = ({ article }: { article: Article | undefined }) => {
     return (
         <main className={styles.container}>
-            <Img />
+            <Img src={article?.urlToImage} />
             {/* <Space direction='horizontal' className={styles['container-content']}> */}
             <Row className={styles['container-content']}>
                 <Col xs={4}>
                     <Info />
                 </Col>
                 <Col xs={20}>
-                    <Article />
+                    <PostArticle />
                 </Col>
             </Row>
 

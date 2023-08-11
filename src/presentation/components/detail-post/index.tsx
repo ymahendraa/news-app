@@ -1,17 +1,26 @@
 // component import
 import { Row, Col } from "antd";
-import styles from "./detail.module.css";
-import Info from "./Info";
 import Content from "./Content";
 import PopularPost from "../popular-post";
-const DetailPost: React.FC = () => {
+import { Articles } from "../../../domain/models";
+
+interface DetailPostProps {
+  detail: Articles | undefined;
+  trending: Articles | undefined;
+}
+
+const DetailPost: React.FC<DetailPostProps> = ({ detail, trending }: DetailPostProps) => {
   return (
     <Row justify="space-between" gutter={[24, 16]}>
       <Col xs={18}>
-        <Content />
+        <Content article={detail?.articles[0]} />
       </Col>
       <Col xs={6}>
-        <PopularPost />
+        {
+          trending?.articles.map((article, index) => (
+            <PopularPost key={index} article={article} />
+          ))
+        }
       </Col>
     </Row>
   );

@@ -1,13 +1,18 @@
 import styles from "./detail.module.css";
 import { Image } from "antd";
-const Img: React.FC = () => {
+
+interface ImgProps {
+    src: string | undefined;
+}
+
+const Img: React.FC<ImgProps> = ({ src }: ImgProps) => {
     return (
         <Image
             preview={true}
             // width={1000}
             // height={500}
             className={styles.image}
-            src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
+            src={src}
             alt="cover content"
         />
     );

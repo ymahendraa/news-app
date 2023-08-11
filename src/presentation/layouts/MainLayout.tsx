@@ -11,6 +11,7 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
+import { Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -28,7 +29,7 @@ const items: MenuProps["items"] = [
   icon: React.createElement(icon),
   // label: `nav ${index + 1}`,
 }));
-const MainLayout = ({ children }: { children: JSX.Element }) => {
+const MainLayout = () => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
@@ -55,14 +56,15 @@ const MainLayout = ({ children }: { children: JSX.Element }) => {
         {/* <Menu mode="inline" defaultSelectedKeys={['4']} items={items} /> */}
       </Sider>
       <Layout
-        style={{ marginLeft: "100px", marginRight: "20px", paddingTop: 15 }}
+        style={{ marginLeft: "100px", paddingTop: 15 }}
       >
         <Content
           style={{
             minHeight: "100vh",
           }}
         >
-          {children}
+          {/* {children} */}
+          <Outlet />
         </Content>
       </Layout>
     </Layout>

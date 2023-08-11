@@ -2,16 +2,24 @@
 import { Space, Typography } from "antd";
 import { FaShare, FaBookmark } from 'react-icons/fa';
 import styles from './brief.module.css'
+import dayjs from "dayjs";
 
 const { Title, Paragraph, Text } = Typography;
-const Info: React.FC = () => {
+
+interface InfoProps {
+  title: string;
+  createdDate: string;
+  description: string;
+}
+
+const Info: React.FC<InfoProps> = ({ title, createdDate, description }: InfoProps) => {
   return (
     <Space direction="vertical" size={0}>
       <Space size="large">
         <Text style={{ color: "#5842FF" }} strong>
-          Art
+          Popular
         </Text>
-        <Text>2 hours ago</Text>
+        <Text>{dayjs(createdDate).format('DD MMMM YYYY')}</Text>
       </Space>
       <Title
         level={4}
@@ -19,11 +27,10 @@ const Info: React.FC = () => {
           marginTop: "10px",
         }}
       >
-        The power of art in a political age is more impressive
+        {title}
       </Title>
       <Paragraph>
-        I sometimes feel I'm in a daily struggle not to become a shallowe
-        version of myself...
+        {description}
       </Paragraph>
       <div className={styles['bottom-info']}>
         <Space direction="vertical" align="start" size={1}>
@@ -32,7 +39,7 @@ const Info: React.FC = () => {
           </Text>
           <Text>People saw</Text>
         </Space>
-        <Space direction="horizontal" align="start" size={1}>
+        <Space direction="horizontal" align="start" size={8}>
           <FaShare size={20} />
           <FaBookmark size={20} />
         </Space>

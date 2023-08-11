@@ -1,14 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { ConfigProvider } from "antd";
-import MainPost from "./presentation/components/main-post";
-import PopularPost from "./presentation/components/popular-post";
-import HealthPost from "./presentation/components/health-post";
-import TechPost from "./presentation/components/tech-post";
-import DetailPost from "./presentation/components/detail-post";
+
 import MainLayout from "./presentation/layouts/MainLayout";
 import MainPage from "./presentation/pages/main-page";
+import { Route, Routes } from "react-router-dom";
+import DetailPost from "./presentation/components/detail-post";
+import DetailPage from "./presentation/pages/detail-page";
 function App() {
   return (
     <ConfigProvider
@@ -19,14 +16,20 @@ function App() {
         },
       }}
     >
-      <MainLayout>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="home" element={<MainPage />} />
+          <Route path="detail" element={<DetailPage />} />
+        </Route>
+      </Routes>
+      {/* <MainLayout>
         <MainPage />
-        {/* <MainPost /> */}
-        {/* <PopularPost /> */}
-        {/* <HealthPost /> */}
-        {/* <TechPost /> */}
-        {/* <DetailPost /> */}
-      </MainLayout>
+        <MainPost />
+        <PopularPost />
+        <HealthPost />
+        <TechPost />
+        <DetailPost />
+      </MainLayout> */}
     </ConfigProvider>
   );
 }
