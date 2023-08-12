@@ -3,7 +3,7 @@ import styles from "./detail.module.css";
 import { Space, Typography } from "antd";
 const { Title, Paragraph, Text } = Typography;
 
-interface PostArticle {
+interface PostArticleProps {
   author: string | undefined;
   title: string | undefined;
   createdDate: string | undefined;
@@ -17,7 +17,7 @@ const PostArticle = ({
   createdDate,
   content,
   url,
-}: PostArticle) => {
+}: PostArticleProps) => {
   return (
     <article className={styles.article}>
       <Space className={styles.category}>

@@ -1,7 +1,7 @@
 // component import
 import { Row, Col } from "antd";
 import Info from "./Info";
-import PostArticle from "./Article";
+import PostArticle from "./PostArticle";
 import Img from "./Img";
 
 // utils import

@@ -1,38 +1,40 @@
-import React from "react";
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Layout, theme } from "antd";
-import { Outlet } from "react-router-dom";
+import { Button, Layout, Tooltip, theme } from "antd";
+import { Outlet, useNavigate } from "react-router-dom";
+import { AiFillHome, AiOutlineSearch } from 'react-icons/ai'
+import { BsBookmarks } from 'react-icons/bs'
 
 const { Content, Sider } = Layout;
 
-const items: MenuProps["items"] = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  AppstoreOutlined,
-  TeamOutlined,
-  ShopOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  // label: `nav ${index + 1}`,
-}));
+
 const MainLayout = () => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
+
+  // define navigate
+  const navigate = useNavigate();
+
+  // define array for rendering icons
+  const items = [
+    {
+      key: "1",
+      name: 'home',
+      icon: <AiFillHome size={24} />,
+      url: "/",
+    },
+    {
+      key: "2",
+      name: 'search',
+      icon: <AiOutlineSearch size={24} />,
+      url: "#",
+    },
+    {
+      key: "3",
+      name: 'bookmark',
+      icon: <BsBookmarks size={24} />,
+      url: "#",
+    }
+  ]
 
   return (
     <Layout hasSider>
@@ -43,16 +45,35 @@ const MainLayout = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: 'center',
           overflow: "auto",
-          height: "60vh",
+          height: "70vh",
           position: "fixed",
-          left: 0,
-          top: 0,
+          borderRadius: '50px',
+          left: '1%',
+          top: '50%',
           bottom: 0,
+          transform: "translateY(-50%)"
         }}
       >
-        <div className="demo-logo-vertical" />
-        ini sidebar
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          rowGap: '2rem',
+          justifyContent: 'center',
+          height: '100%',
+        }}>
+
+          {/* map icon */}
+          {items.map((item, index) => (
+            <Tooltip title={item.name} key={index}>
+              <Button onClick={() => navigate(item.url)} size="large" shape="circle" icon={item.icon} />
+            </Tooltip>
+          ))}
+        </div>
+
+
         {/* <Menu mode="inline" defaultSelectedKeys={['4']} items={items} /> */}
       </Sider>
       <Layout style={{ marginLeft: "100px", paddingTop: 15 }}>
@@ -61,7 +82,6 @@ const MainLayout = () => {
             minHeight: "100vh",
           }}
         >
-          {/* {children} */}
           <Outlet />
         </Content>
       </Layout>
