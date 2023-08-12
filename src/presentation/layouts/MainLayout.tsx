@@ -68,7 +68,7 @@ const MainLayout = () => {
           {/* map icon */}
           {items.map((item, index) => (
             <Tooltip title={item.name} key={index}>
-              <Button onClick={() => navigate(item.url)} size="large" shape="circle" icon={item.icon} />
+              <Button onClick={() => navigate(item.url)} size="large" shape="circle" icon={item.icon} data-testid={item.name} />
             </Tooltip>
           ))}
         </div>
