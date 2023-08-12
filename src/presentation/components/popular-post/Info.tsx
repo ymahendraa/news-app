@@ -1,8 +1,13 @@
 // component import
 import { Space, Typography } from "antd";
-import { FaShare, FaBookmark } from 'react-icons/fa';
-import styles from './brief.module.css'
+import { FaShare, FaBookmark } from "react-icons/fa";
+import styles from "./brief.module.css";
 import dayjs from "dayjs";
+import {
+  NavigateFunction,
+  createSearchParams,
+  useNavigate,
+} from "react-router-dom";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -12,27 +17,40 @@ interface InfoProps {
   description: string;
 }
 
-const Info: React.FC<InfoProps> = ({ title, createdDate, description }: InfoProps) => {
+const Info: React.FC<InfoProps> = ({
+  title,
+  createdDate,
+  description,
+}: InfoProps) => {
+  // define navigate
+  const navigate: NavigateFunction = useNavigate();
   return (
     <Space direction="vertical" size={0}>
       <Space size="large">
         <Text style={{ color: "#5842FF" }} strong>
           Popular
         </Text>
-        <Text>{dayjs(createdDate).format('DD MMMM YYYY')}</Text>
+        <Text>{dayjs(createdDate).format("DD MMMM YYYY")}</Text>
       </Space>
       <Title
         level={4}
         style={{
           marginTop: "10px",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          navigate({
+            pathname: "/detail",
+            search: createSearchParams({
+              title,
+            }).toString(),
+          });
         }}
       >
         {title}
       </Title>
-      <Paragraph>
-        {description}
-      </Paragraph>
-      <div className={styles['bottom-info']}>
+      <Paragraph>{description}</Paragraph>
+      <div className={styles["bottom-info"]}>
         <Space direction="vertical" align="start" size={1}>
           <Text strong style={{ fontSize: "18px" }}>
             25 123

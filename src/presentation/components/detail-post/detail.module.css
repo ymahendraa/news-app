@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-bottom: 1rem;
 }
 .container-info {
   background: white;
@@ -18,8 +19,7 @@
 .container-content {
   z-index: 1;
   /* position: absolute; */
-  margin-top: -10rem;
-  width: 90%;
+  width: 80%;
   padding: 3rem 2rem 3rem 0rem;
   box-sizing: border-box;
   background: white;
@@ -27,8 +27,10 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 .image {
+  margin-bottom: -10rem;
   max-width: 100%;
   height: auto;
+  max-height: 850px;
   border-radius: 30px;
 }
 .article {

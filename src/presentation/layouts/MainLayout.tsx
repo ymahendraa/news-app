@@ -10,10 +10,10 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Layout, Menu, theme } from "antd";
+import { Layout, theme } from "antd";
 import { Outlet } from "react-router-dom";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const items: MenuProps["items"] = [
   UserOutlined,
@@ -44,7 +44,7 @@ const MainLayout = () => {
           flexDirection: "column",
           alignItems: "center",
           overflow: "auto",
-          height: "100vh",
+          height: "60vh",
           position: "fixed",
           left: 0,
           top: 0,
@@ -55,9 +55,7 @@ const MainLayout = () => {
         ini sidebar
         {/* <Menu mode="inline" defaultSelectedKeys={['4']} items={items} /> */}
       </Sider>
-      <Layout
-        style={{ marginLeft: "100px", paddingTop: 15 }}
-      >
+      <Layout style={{ marginLeft: "100px", paddingTop: 15 }}>
         <Content
           style={{
             minHeight: "100vh",

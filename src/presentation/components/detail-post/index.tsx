@@ -2,28 +2,26 @@
 import { Row, Col } from "antd";
 import Content from "./Content";
 import PopularPost from "../popular-post";
-import { Articles } from "../../../domain/models";
+import { Article, Articles } from "../../../domain/models";
 
 interface DetailPostProps {
   detail: Articles | undefined;
-  trending: Articles | undefined;
 }
 
-const DetailPost: React.FC<DetailPostProps> = ({ detail, trending }: DetailPostProps) => {
-  return (
-    <Row justify="space-between" gutter={[24, 16]}>
-      <Col xs={18}>
-        <Content article={detail?.articles[0]} />
-      </Col>
-      <Col xs={6}>
-        {
-          trending?.articles.map((article, index) => (
-            <PopularPost key={index} article={article} />
-          ))
-        }
-      </Col>
-    </Row>
-  );
+const DetailPost: React.FC<DetailPostProps> = ({ detail }: DetailPostProps) => {
+  // detailSelection : function to selection details with urlToImage != null
+  // @params: data: string
+  // @return: void
+  function detailSelection(data: Articles | undefined): any {
+    const selectedIndex: any = data?.articles.findIndex(
+      (value) => !value.content.includes("<li>")
+    );
+    return selectedIndex;
+  }
+
+  // define index
+  const index: any = detailSelection(detail);
+  return <Content article={detail?.articles[index]} />;
 };
 
 export default DetailPost;

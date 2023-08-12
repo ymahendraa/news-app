@@ -14,7 +14,7 @@ const Img: React.FC<ImgProps> = ({ src }: ImgProps) => {
       height={80}
       className={styles.image}
       src={src}
-      alt="main"
+      alt="tech-post"
     />
   );
 };

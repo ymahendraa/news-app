@@ -1,0 +1,20 @@
+.popular-section {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  justify-content: center;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: sticky;
+  top: 0;
+}
+
+/* Hide the scrollbar for WebKit browsers */
+.popular-section > div::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.popular-section > div {
+  overflow-y: auto;
+}

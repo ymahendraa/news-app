@@ -1,5 +1,6 @@
 .container {
-  width: 340px;
+  display: flex;
+  justify-content: space-between;
   text-align: left;
 }
 .image {

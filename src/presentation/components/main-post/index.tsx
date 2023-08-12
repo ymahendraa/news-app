@@ -1,5 +1,4 @@
 // component import
-import { useNavigation } from "react-router-dom";
 import { Article } from "../../../domain/models";
 import Img from "./Img";
 import Info from "./Info";
@@ -10,7 +9,11 @@ const MainPost = ({ article }: { article: Article }) => {
     <main>
       <Img src={article.urlToImage} />
       <div className={styles["info-container"]}>
-        <Info title={article.title} description={article.description} createdDate={article.publishedAt} />
+        <Info
+          title={article.title}
+          description={article.description}
+          createdDate={article.publishedAt}
+        />
       </div>
     </main>
   );
